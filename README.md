@@ -6,7 +6,6 @@ Plugins
 ----------
 * mongo_ops        : operations/second
 * mongo_mem        : mapped, virtual and resident memory usage
-* mongo_btree      : btree access/misses/etc...
 * mongo_conn       : current connections
 * mongo_lock       : write lock info
 * mongo_docs       : number of documents (inserted, updated...)
@@ -42,7 +41,6 @@ Install pymongo:
 
     git clone https://github.com/comerford/mongo-munin.git /tmp/mongo-munin
     sudo cp /tmp/mongo-munin/mongo_* /usr/share/munin/plugins
-    sudo ln -sf /usr/share/munin/plugins/mongo_btree /etc/munin/plugins/mongo_btree
     sudo ln -sf /usr/share/munin/plugins/mongo_conn /etc/munin/plugins/mongo_conn
     sudo ln -sf /usr/share/munin/plugins/mongo_lock /etc/munin/plugins/mongo_lock
     sudo ln -sf /usr/share/munin/plugins/mongo_mem /etc/munin/plugins/mongo_mem
