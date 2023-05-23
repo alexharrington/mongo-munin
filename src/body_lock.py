@@ -2,7 +2,13 @@
 name = "locked"
 
 def doData():
-    print(name + ".value " + str( 100 * (getServerStatus()["globalLock"]["lockTime"]/getServerStatus()["globalLock"]["totalTime"]) ))
+    lockTime = 0
+    for k,v in getServerStatus()["locks"].items():
+        if 'timeAcquiringMicros' in v:
+            for n in v['timeAcquiringMicros']:
+                lockTime += v['timeAcquiringMicros'][n]
+    
+    print(name + ".value " + str( 100 * (lockTime/getServerStatus()["globalLock"]["totalTime"]) ))
 
 def doConfig():
 
