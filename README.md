@@ -15,7 +15,7 @@ Plugins
 
 Requirements
 -----------
-* MongoDB 2.4+
+* MongoDB 4+
 * python3/pymongo
 
 
