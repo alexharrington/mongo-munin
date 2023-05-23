@@ -11,7 +11,7 @@ def getDatabasesStats():
             dbs[k] = {}
             for coll in db.collection_names():
                 if '.' not in coll:
-                    dbs[k][coll] = db[coll].estimatedDocumentCount()
+                    dbs[k][coll] = db[coll].estimated_document_count()
 
     return dbs
 
