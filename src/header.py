@@ -1,5 +1,4 @@
 
-import urllib.request, urllib.error, urllib.parse
 import sys
 import os  
 import pymongo

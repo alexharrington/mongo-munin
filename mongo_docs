@@ -1,16 +1,27 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 ## GENERATED FILE - DO NOT EDIT
 
-import urllib2
 import sys
-import os
+import os  
 import pymongo
 
+
+def getClient():
+    if 'MONGO_DB_URI' in os.environ:
+        return pymongo.MongoClient(os.environ['MONGO_DB_URI'])
+    else:
+        return pymongo.MongoClient()
+
+
+def getServerStatus():
+    c = getClient()
+    return c.admin.command('serverStatus', workingSet=True)
+
+name = "documents"
+
 def getDatabasesStats():
-    host = "127.0.0.1"
-    port = 27017
-    c = pymongo.MongoClient(host, port)
+    c = getClient()
 
     dbs = {}
     for k in c.database_names():
@@ -22,9 +33,6 @@ def getDatabasesStats():
                     dbs[k][coll] = db[coll].count()
 
     return dbs
-
-name = "documents"
-
 
 def doData():
     ss = getDatabasesStats()
@@ -45,8 +53,9 @@ def doConfig():
             print str(k)+str(a) + ".label " + str(k) + " " + str(a)
             print str(k)+str(a) + ".draw LINE1"
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":          
+	
     from os import environ
     if 'HOST' in environ:
         host = environ['HOST']
@@ -56,7 +65,7 @@ if __name__ == "__main__":
         user = environ['USER']
     if 'PASSWORD' in environ:
         password = environ['PASSWORD']
-
+    
 if len(sys.argv) > 1 and sys.argv[1] == "config":
     doConfig()
 else:
