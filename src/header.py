@@ -1,5 +1,5 @@
 
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 import sys
 import os  
 import pymongo
