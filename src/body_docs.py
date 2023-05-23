@@ -17,20 +17,20 @@ def getDatabasesStats():
 
 def doData():
     ss = getDatabasesStats()
-    for k,v in ss.iteritems():
-        for a,b in v.iteritems():
-            print(str(k)+str(a) + ".value " + str(b))
+    for k,v in ss.items():
+        for a,b in v.items():
+            print((str(k)+str(a) + ".value " + str(b)))
 
 
 def doConfig():
 
-    print "graph_title MongoDB documents count"
-    print "graph_args --base 1000 -l 0 --vertical-label Docs"
-    print "graph_category MongoDB"
+    print("graph_title MongoDB documents count")
+    print("graph_args --base 1000 -l 0 --vertical-label Docs")
+    print("graph_category MongoDB")
 
     ss = getDatabasesStats()
-    for k,v in ss.iteritems():
-        for a,b in v.iteritems():
-            print str(k)+str(a) + ".label " + str(k) + " " + str(a)
-            print str(k)+str(a) + ".draw LINE1"
+    for k,v in ss.items():
+        for a,b in v.items():
+            print(str(k)+str(a) + ".label " + str(k) + " " + str(a))
+            print(str(k)+str(a) + ".draw LINE1")
 
