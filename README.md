@@ -4,17 +4,19 @@ Munin Plugins for MongoDB
 
 Plugins
 ----------
-* mongo_ops   : operations/second
-* mongo_mem   : mapped, virtual and resident memory usage
-* mongo_btree : btree access/misses/etc...
-* mongo_conn  : current connections
-* mongo_lock  : write lock info
-* mongo_docs  : number of documents (inserted, updated...)
+* mongo_ops        : operations/second
+* mongo_mem        : mapped, virtual and resident memory usage
+* mongo_btree      : btree access/misses/etc...
+* mongo_conn       : current connections
+* mongo_lock       : write lock info
+* mongo_docs       : number of documents (inserted, updated...)
+* mongo_ops_repl   : operations/second as secondary
+* mongo_repl_state : replication state primary/secondary
 
 Requirements
 -----------
 * MongoDB 2.4+
-* python/pymongo
+* python3/pymongo
 
 
 ## Install Requirements (choose one)
@@ -23,10 +25,7 @@ Requirements
 
 Install pymongo:
 
-    sudo apt-get install pip
-    sudo apt-get install build-essential python-dev
-    sudo pip install pymongo
-
+    sudo apt-get install python3-pymongo
 
 #### Red Hat and Cent OS
 
@@ -51,6 +50,8 @@ Install pymongo:
     sudo ln -sf /usr/share/munin/plugins/mongo_docs /etc/munin/plugins/mongo_docs
     sudo ln -sf /usr/share/munin/plugins/mongo_collections /etc/munin/plugins/mongo_collections
     sudo ln -sf /usr/share/munin/plugins/mongo_page_faults /etc/munin/plugins/mongo_page_faults    
+    sudo ln -sf /usr/share/munin/plugins/mongo_ops_repl /etc/munin/plugins/mongo_ops_repl
+    sudo ln -sf /usr/share/munin/plugins/mongo_repl_state /etc/munin/plugins/mongo_repl_state
     sudo chmod +x /usr/share/munin/plugins/mongo_*
     sudo service munin-node restart
 

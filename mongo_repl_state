@@ -21,27 +21,27 @@ def getServerStatus():
 
 
 def doData():
-    master = getServerStatus()["repl"]["ismaster"]
+    primary = getServerStatus()["repl"]["ismaster"]
     secondary = getServerStatus()["repl"]["secondary"]
     
-    if master:
-        print("ismaster.value 1")
+    if primary:
+        print("primary.value 1")
         print("secondary.value 0")
     elif secondary:
-        print("ismaster.value 0")
+        print("primary.value 0")
         print("secondary.value 1")
     else:
-        print("ismaster.value 0")
+        print("primary.value 0")
         print("secondary.value 0")
 
 def doConfig():
 
     print("graph_title MongoDB Replication State")
-    print("graph_args --base 1 -l 0")
+    print("graph_args --base 1000 -l 0 -u 1")
     print("graph_vlabel State")
     print("graph_category MongoDB")
 
-    for k in ('ismaster', 'secondary'):
+    for k in ('primary', 'secondary'):
         print(k + ".label " + k)
         print(k + ".min 0")
         print(k + ".type COUNTER")
